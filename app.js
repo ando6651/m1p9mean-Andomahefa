@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
-app.use(express.static(__dirname + '/client')); // Allow front end to access public folder
+app.use(express.static('./client')); // Allow front end to access public folder
 
 // error handlers
 app.use((err, req, res,next) => {
@@ -29,7 +29,7 @@ app.use((err, req, res,next) => {
 
 // Set Application Static Layout
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/src/app/index.html')); // Set index.html as layout
+    res.sendFile('./public/src/app/index.html'); // Set index.html as layout
 });
 
 // start server
