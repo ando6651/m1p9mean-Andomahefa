@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
+app.use(express.static(__dirname + '/client')); // Allow front end to access public folder
 
 // error handlers
 app.use((err, req, res,next) => {

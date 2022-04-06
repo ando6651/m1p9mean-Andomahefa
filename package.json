@@ -1,16 +1,17 @@
 {
   "name": "ekaly_mean_1002_back",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "mean stack application ekaly",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ando6651/m1p9mean-Andomahefa.git"
   },
-  "author": "",
+  "author": "Andomahefa Rakotomalala",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ando6651/m1p9mean-Andomahefa/issues"
