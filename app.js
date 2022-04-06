@@ -27,5 +27,10 @@ app.use((err, req, res,next) => {
     }
 });
 
+// Set Application Static Layout
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/src/app/index.html')); // Set index.html as layout
+});
+
 // start server
 app.listen(process.env.PORT, () => console.log(`Starting at port : ${process.env.PORT}`));
