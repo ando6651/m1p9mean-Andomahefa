@@ -13,6 +13,10 @@ var app = express();
 
 //middleware
 app.use(bodyParser.json());
+
+var distDir = __dirname + "/dist/ekaly-front";
+app.use(express.static(distDir));
+
 app.use(cors());
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
@@ -27,3 +31,8 @@ app.use((err, req, res,next) => {
 
 // start server
 app.listen(process.env.PORT || 5000, () => console.log(`Starting at port : ${process.env.PORT}`));
+
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/ekaly-front/index.html'));
+});
