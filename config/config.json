@@ -6,7 +6,7 @@
         "JWT_EXP": "15m"
     },
     "production": {
-        "PORT": 8080,
+        "PORT": 443,
         "MONGODB_URI": "mongodb+srv://ekaly:ekaly@cluster0.emawm.mongodb.net/EkalyDB?retryWrites=true&w=majority",
         "JWT_SECRET": "SECRET#123",
         "JWT_EXP": "15m"
