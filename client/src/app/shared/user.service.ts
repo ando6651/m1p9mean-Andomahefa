@@ -17,6 +17,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   postUser(user: User){
-    return this.http.post('https://app-ekaly.herokuapp.com/api/register',user);
+    return this.http.post(environment.apiBaseUrl+'/register',user);
   }
 }
