@@ -4,6 +4,7 @@ const passport = require('passport');
 const User = mongoose.model('User');
 
 module.exports.register = (req,res,next) => {
+  console.log('register in');
     var user = new User();
     user.profil = req.body.profil;
     user.email = req.body.email;
