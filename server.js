@@ -1,4 +1,3 @@
-require('./config/config');
 require('./models/db');
 require('./config/passportConfig');
 
@@ -8,7 +7,7 @@ const cors = require('cors');
 const passport = require('passport');
 
 var app = express(); // Invoke express to variable for use in application
-var port = process.env.PORT || 5000; // Set default port or assign a port in enviornment
+ // Set default port or assign a port in enviornment
 var morgan = require('morgan'); // Import Morgan Package
 var mongoose = require('mongoose'); // HTTP request logger middleware for Node.js
 var router = express.Router(); // Invoke the Express Router
@@ -38,7 +37,7 @@ app.use((err, req, res,next) => {
 
 
 // Start Server
-app.listen(port, function() {
+app.listen(process.env.PORT || 5000,'0.0.0.0', function() {
     console.log('Running the server on port ' + port); // Listen on configured port
 });
 

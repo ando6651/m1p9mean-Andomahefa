@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI, (err) => {
+mongoose.connect('mongodb+srv://ekaly:ekaly@cluster0.emawm.mongodb.net/EkalyDB?retryWrites=true&w=majority', (err) => {
     if (!err) {
         console.log('Connection MongoDB success.');
     } else {
