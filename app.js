@@ -18,14 +18,14 @@ var path = require('path'); // Import path module
 app.use(morgan('dev')); // Morgan Middleware
 app.use(bodyParser.json()); // Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-app.use(express.static(__dirname + '/client/dist/ekaly-front')); // Allow front end to access client folder
+//app.use(express.static(__dirname + '/client/dist/ekaly-front')); // Allow front end to access client folder
 
 app.use('/api', appRoutes);
 
 // Set Application Static Layout
-app.get('*', function(req, res) {
+/*app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/client/dist/ekaly-front/index.html')); // Set index.html as layout
-});
+});*/
 
 // error handlers
 app.use((err, req, res,next) => {
