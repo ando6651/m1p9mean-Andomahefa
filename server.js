@@ -17,14 +17,14 @@ var path = require('path'); // Import path module
 app.use(morgan('dev')); // Morgan Middleware
 app.use(bodyParser.json()); // Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-//app.use(express.static(__dirname + '/client/dist/ekaly-front')); // Allow front end to access client folder
+app.use(express.static(__dirname + '/client/dist/ekaly-front')); // Allow front end to access client folder
 
 app.use('/api', appRoutes);
 
 // Set Application Static Layout
-/*app.get('*', function(req, res) {
+app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/client/dist/ekaly-front/index.html')); // Set index.html as layout
-});*/
+});
 
 // error handlers
 app.use((err, req, res,next) => {
@@ -38,7 +38,7 @@ app.use((err, req, res,next) => {
 
 // Start Server
 app.listen(process.env.PORT || 5000,'0.0.0.0', function() {
-    console.log('Running the server on port ' + process.env.PORT); // Listen on configured port
+    console.log('Running the server on port 5000 / ' + process.env.PORT); // Listen on configured port
 });
 
 
