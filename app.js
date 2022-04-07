@@ -8,7 +8,7 @@ const cors = require('cors');
 const passport = require('passport');
 
 var app = express(); // Invoke express to variable for use in application
-var port = process.env.PORT || 8080; // Set default port or assign a port in enviornment
+var port = process.env.PORT || 80; // Set default port or assign a port in enviornment
 var morgan = require('morgan'); // Import Morgan Package
 var mongoose = require('mongoose'); // HTTP request logger middleware for Node.js
 var router = express.Router(); // Invoke the Express Router
