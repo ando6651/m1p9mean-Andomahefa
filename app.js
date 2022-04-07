@@ -7,19 +7,26 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 
-const rtsIndex = require('./routes/index.router');
+var app = express(); // Invoke express to variable for use in application
+var port = process.env.PORT || 8080; // Set default port or assign a port in enviornment
+var morgan = require('morgan'); // Import Morgan Package
+var mongoose = require('mongoose'); // HTTP request logger middleware for Node.js
+var router = express.Router(); // Invoke the Express Router
+var appRoutes = require('./routes/index.router')(router); // Import the application end points/API
+var path = require('path'); // Import path module
 
-var app = express();
+app.use(morgan('dev')); // Morgan Middleware
+app.use(bodyParser.json()); // Body-parser middleware
+app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
+app.use(express.static(__dirname + '/client/dist/ekaly-front')); // Allow front end to access client folder
 
-//middleware
-app.use(bodyParser.json());
+app.use('/api', appRoutes);
 
-var distDir = __dirname + "/dist/ekaly-front";
-app.use(express.static(distDir));
+// Set Application Static Layout
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/client/dist/ekaly-front/index.html')); // Set index.html as layout
+});
 
-app.use(cors());
-app.use(passport.initialize());
-app.use('/api', rtsIndex);
 // error handlers
 app.use((err, req, res,next) => {
     if (err.name == 'ValidationError') {
@@ -29,10 +36,10 @@ app.use((err, req, res,next) => {
     }
 });
 
-// start server
-app.listen(process.env.PORT || 8080, () => console.log(`Starting at port : ${process.env.PORT}`));
 
-
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/ekaly-front/index.html'));
+// Start Server
+app.listen(port, function() {
+    console.log('Running the server on port ' + port); // Listen on configured port
 });
+
+

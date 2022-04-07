@@ -1,2 +1,0 @@
-ekaly / ekaly
-mongodb+srv://ekaly:<ekaly>@cluster0.emawm.mongodb.net/test
