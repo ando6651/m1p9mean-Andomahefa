@@ -1,0 +1,18 @@
+<div  class="table-fill">
+  <table class="table table-striped">
+    <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prix</th>
+          <th></th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of datas">
+        <td>{{ data.nom }}</td>
+        <td>{{ data.prixvente }}</td>
+        <td><a>commander</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

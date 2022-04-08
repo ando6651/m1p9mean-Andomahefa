@@ -6,22 +6,22 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 
-var app = express(); // Invoke express to variable for use in application
- // Set default port or assign a port in enviornment
-var morgan = require('morgan'); // Import Morgan Package
-var mongoose = require('mongoose'); // HTTP request logger middleware for Node.js
-var router = express.Router(); // Invoke the Express Router
-var appRoutes = require('./routes/index.router')(router); // Import the application end points/API
-var path = require('path'); // Import path module
+var app = express();
+var morgan = require('morgan');
+var mongoose = require('mongoose');
+var router = express.Router();
+var appRoutes = require('./routes/index.router')(router);
+var path = require('path');
 
-app.use(morgan('dev')); // Morgan Middleware
-app.use(bodyParser.json()); // Body-parser middleware
-app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-app.use(express.static(__dirname + '/client/dist/ekaly-front')); // Allow front end to access client folder
-
+// middleware
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(cors());
+app.use(passport.initialize());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/client/dist/ekaly-front'));
 app.use('/api', appRoutes);
-
-// Set Application Static Layout
+// Set Application Static
 app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/client/dist/ekaly-front/index.html')); // Set index.html as layout
 });
@@ -34,7 +34,6 @@ app.use((err, req, res,next) => {
         res.status(422).send(valErrors);
     }
 });
-
 
 // Start Server
 app.listen(process.env.PORT || 5000,'0.0.0.0', function() {

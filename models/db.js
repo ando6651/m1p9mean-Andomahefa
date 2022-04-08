@@ -8,4 +8,6 @@ mongoose.connect('mongodb+srv://ekaly:ekaly@cluster0.emawm.mongodb.net/EkalyDB?r
 });
 
 require('./user.model');
-//module.exports = mongoose;
+require('./plat.model');
+require('./commande.model');
+require('./infocommande.model');
