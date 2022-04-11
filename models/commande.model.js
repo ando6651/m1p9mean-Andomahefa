@@ -15,7 +15,8 @@ var commandeSchema = new mongoose.Schema({
     },
     quantite: {
       type: Number,
-      required: 'Quantite can\'t be empty'
+      required: 'Quantite can\'t be empty',
+      min: [0, 'Too few']
     }
 });
 

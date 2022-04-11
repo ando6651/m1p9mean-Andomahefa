@@ -14,11 +14,13 @@ var platSchema = new mongoose.Schema({
     },
     prix: {
       type: Number,
-      required: 'Prix revient can\'t be empty'
+      required: 'Prix revient can\'t be empty',
+      min: [1, 'Too few']
     },
     prixvente: {
       type: Number,
-      required: 'Prix vente can\'t be empty'
+      required: 'Prix vente can\'t be empty',
+      min: [1, 'Too few']
     },
     visible: {
       type: Boolean,
