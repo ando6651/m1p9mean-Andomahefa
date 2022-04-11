@@ -11,6 +11,8 @@ module.exports.addplat = (req,res,next) => {
       plat.nom = req.body.nom;
       plat.idrestau = req._id;
       plat.restau = users[0]['email'];
+      if (req.body.prix < 1) return;
+      if (req.body.prixvente < 1) return;
       plat.prix = req.body.prix;
       plat.prixvente = req.body.prixvente;
       var visible =req.body.visible;

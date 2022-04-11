@@ -13,6 +13,7 @@ function addCommandeWithQuantite(idmere ,plat , quantite) {
   commande.idplat = plat['_id'];
   commande.nomplat = plat['nom'];
   commande.quantite = quantite;
+  if (quantite < 1) return;
   commande.idmere = idmere;
   commande.save(function (err, result) {
     if (err) {
@@ -29,7 +30,6 @@ function addCommandeMere(client ,mail, date, idplat, quantite){
   commandemere.etat = "commander";
   commandemere.date = date;
   commandemere.save(function (err, result) {
-    console.log(result);
     var index=0;
     while(index < idplat.length) {
       addcomm(result["_id"], idplat[index], quantite[index] , date )
@@ -54,6 +54,7 @@ function addInfoCommandeWithQuantite(plat , quantite, date){
   infocommande.plat = plat['nom'];
   infocommande.idrestau = plat['idrestau'];
   infocommande.restau = plat['restau'];
+  if (quantite < 1) return;
   infocommande.benefice = (plat['prixvente'] - plat['prix'])*quantite ;
   infocommande.date = date;
   infocommande.save(function (err, result) {
