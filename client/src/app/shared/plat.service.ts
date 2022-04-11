@@ -11,6 +11,7 @@ export class PlatService {
     _id: '',
     nom: '',
     idrestau: '',
+    restau: '',
     prix: 0,
     prixvente: 0,
     visible: true
@@ -22,5 +23,14 @@ export class PlatService {
   getPlatList() {
     return this.http.get(environment.apiBaseUrl + '/platlist');
   }
+  getPlatListClient() {
+    return this.http.get(environment.apiBaseUrl + '/platlistclient');
+  }
+  addPlat(plat: Plat){
+    return this.http.post(environment.apiBaseUrl+'/addplat',plat);
+  }
 
+  setvisible(idplat: string, visible: boolean){
+    return this.http.post(environment.apiBaseUrl + '/platvisible',{ idplat: idplat, visible : visible });
+  }
 }

@@ -9,6 +9,9 @@ var platSchema = new mongoose.Schema({
         type: String,
         required: 'Restaurant can\'t be empty'
     },
+    restau: {
+      type: String
+    },
     prix: {
       type: Number,
       required: 'Prix revient can\'t be empty'

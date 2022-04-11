@@ -31,6 +31,9 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + '/homeredirect');
   }
 
+  getUserList() {
+    return this.http.get(environment.apiBaseUrl + '/userlist');
+  }
 
   //Helper Methods
 

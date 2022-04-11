@@ -6,9 +6,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 
+var mongoose = require('mongoose');
+
 var app = express();
 var morgan = require('morgan');
-var mongoose = require('mongoose');
 var router = express.Router();
 var appRoutes = require('./routes/index.router')(router);
 var path = require('path');

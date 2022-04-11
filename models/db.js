@@ -11,3 +11,4 @@ require('./user.model');
 require('./plat.model');
 require('./commande.model');
 require('./infocommande.model');
+require('./commandemere.model');

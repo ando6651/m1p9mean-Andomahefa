@@ -17,7 +17,6 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.setItem("profil", "");
   }
 
   onSubmit(form : NgForm){

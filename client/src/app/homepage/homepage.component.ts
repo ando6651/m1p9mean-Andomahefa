@@ -14,37 +14,32 @@ export class HomepageComponent implements OnInit {
   datas: any;
   usePlat: boolean = true;
   constructor(private userService: UserService,private commandeService: CommandeService,private platService: PlatService, private router: Router) { }
-
   ngOnInit() {
     var commande = "liste des commandes";
     var plat = "liste des plats";
     this.userService.getHomeredirect().subscribe(
       (res:any) => {
         var profil=res['profil'];
-        this.router.navigateByUrl('/'+profil);
-        /*if ((profil == 'responsable')||(profil == 'livreur')) {
-          this.titre=commande;
-        this.usePlat=false;
-          this.commandeService.getCommandeList().subscribe(
-            (res:any) => {
-              this.datas=res['commande'];
-            },
-            err => {
-              console.log(err);
-            }
-          );
-        }else{
-          this.titre=plat;
-          this.platService.getPlatList().subscribe(
-            (res:any) => {
-              this.datas=res['plat'];
-              console.log(this.datas)
-            },
-            err => {
-              console.log(err);
-            }
-          );
-        }*/
+        var urlRedirect="/"+profil+"/";
+        if (profil == "client") {
+          urlRedirect+="plat";
+        }
+        if (profil == "responsable") {
+          urlRedirect+="situation";
+        }
+        if (profil == "livreur") {
+          urlRedirect+="commande";
+        }
+        if (profil == "restaurant") {
+          urlRedirect+="plat";
+        }
+        let now = new Date();
+	      const stop = now.getTime() + 500;
+	      while(true) {
+		      now = new Date();
+		      if(now.getTime() > stop) break;
+	      }
+        this.router.navigateByUrl(urlRedirect);
       },
       err => {
         console.log(err);

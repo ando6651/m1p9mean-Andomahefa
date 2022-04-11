@@ -1,1 +1,8 @@
-<p>restaurant works!</p>
+<mat-toolbar style="background-color: #2b6696;color: white;">
+  <span><img src="/assets/img/logo.png" width="120x" alt="logo e-kaly" /></span>
+  <a mat-button style="color: white;" routerLink="/restaurant/commande">Commande</a>
+  <a mat-button style="color: white;" routerLink="/restaurant/plat">Plat</a>
+  <a mat-button style="color: white;" routerLink="/restaurant/situation">Situation</a>
+  <a mat-button style="color: white;margin-left: auto;" (click)="onLogout()">Log out</a>
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -5,9 +5,15 @@ var infocommandeSchema = new mongoose.Schema({
       type: String,
       required: 'Plat can\'t be empty'
     },
+    plat: {
+      type: String,
+    },
     idrestau: {
       type: String,
       required: 'Restaurant can\'t be empty'
+    },
+    restau: {
+      type: String,
     },
     benefice: {
       type: Number,

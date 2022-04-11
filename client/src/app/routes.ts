@@ -15,6 +15,7 @@ import {CommandeRestauComponent} from './restaurant/commande-restau/commande-res
 import {PlatRestauComponent} from './restaurant/plat-restau/plat-restau.component';
 import {SituationRestauComponent} from './restaurant/situation-restau/situation-restau.component';
 import {CommandeLivreurComponent} from './livreur/commande-livreur/commande-livreur.component';
+import { DetailCommandeComponent } from './restaurant/commande-restau/detail-commande/detail-commande.component';
 import { AuthGuard } from './auth/auth.guard';
 
 export const appRoutes: Routes = [
@@ -30,14 +31,8 @@ export const appRoutes: Routes = [
       path: 'homepage', component: HomepageComponent,canActivate:[AuthGuard]
     },
     {
-      path: 'client', component: ClientComponent,canActivate:[AuthGuard]
-    },
-    {
-      path: 'client/plats', component: ClientComponent,
+      path: 'client/plat', component: ClientComponent,
       children: [{ path: '', component: PlatComponent }]
-    },
-    {
-      path: 'responsable', component: ResponsableComponent,canActivate:[AuthGuard]
     },
     {
       path: 'responsable/commande', component: ResponsableComponent,
@@ -52,18 +47,15 @@ export const appRoutes: Routes = [
       children: [{ path: '', component: SituationRespComponent }]
     },
     {
-      path: 'livreur', component: LivreurComponent,canActivate:[AuthGuard]
-    },
-    {
       path: 'livreur/commande', component: LivreurComponent,
       children: [{ path: '', component: CommandeLivreurComponent }]
     },
     {
-      path: 'restaurant', component: RestaurantComponent,canActivate:[AuthGuard]
-    },
-    {
       path: 'restaurant/commande', component: RestaurantComponent,
       children: [{ path: '', component: CommandeRestauComponent }]
+    },
+    {
+      path: 'commande/details', component: DetailCommandeComponent
     },
     {
       path: 'restaurant/plat', component: RestaurantComponent,

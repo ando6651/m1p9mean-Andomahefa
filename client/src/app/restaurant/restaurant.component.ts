@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService,private router: Router) { }
 
   ngOnInit(): void {
-  }
 
+  }
+  onLogout(){
+    this.userService.deleteToken();
+    this.router.navigate(['/login']);
+  }
 }

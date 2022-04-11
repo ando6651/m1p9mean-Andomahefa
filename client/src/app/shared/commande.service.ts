@@ -12,16 +12,18 @@ export class CommandeService {
     _id: '',
     idplat:'',
     nomplat:'',
-    idClient:'',
-    clientmail:'',
-    date: new Date(),
-    etat: ''
+    quantite: 0,
+    idmere: ''
   };
   constructor(private http: HttpClient) { }
 
   //HttpMethods
 
-  getCommandeList() {
-    return this.http.get(environment.apiBaseUrl + '/commandelist');
+  getCommandeList(idmere: any) {
+    return this.http.post(environment.apiBaseUrl + '/commandelistby',{idmere : idmere});
+  }
+
+  addCommande(commande: any){
+    return this.http.post(environment.apiBaseUrl+'/addcommande',commande);
   }
 }

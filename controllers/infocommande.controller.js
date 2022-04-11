@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
+const { isUndefined } = require('lodash');
 
 const Infocommande = mongoose.model('Infocommande');
 
@@ -29,15 +30,33 @@ module.exports.infocommandelist = (req, res, next) => {
     }
   );
 }
-module.exports.infocommandefindOne = (req, res, next) => {
-  Infocommande.findOne({ _id: req._id},
-    (err, infocommande) => {
-      if (!infocommande) {
-        return res.status(404).json({ status: false, message: 'Error when get information of infocommande.' });
+module.exports.infocommandelistbyplat = (req, res, next) => {
+  var idrestau = req.body.idrestau;
+  if (isUndefined(idrestau) || idrestau == '') {
+    idrestau = req._id;
+  }
+  Infocommande.aggregate([
+    { $match: { idrestau: idrestau , date: new Date(req.body.date) } },
+    { $group: { _id: "$plat" , benefice: { $sum: "$benefice" } } }
+  ] , (err, infocommandes) => {
+      if (!infocommandes || err) {
+        return res.status(404).json({ status: false, message: 'Error when get list of infocommande.' });
       }else {
-        return res.status(200).json({ status: true, infocommande : _.pick(infocommande,['_id','idplat','idrestau','benefice','date']) });
+        return res.status(200).json({ status: true, infocommande : infocommandes});
       }
     }
   );
 }
-
+module.exports.infocommandelistbyrestau = (req, res, next) => {
+  Infocommande.aggregate([
+    { $match: { date: new Date(req.body.date) } },
+    { $group: { _id: "$restau" , benefice: { $sum: "$benefice" } } }
+  ] , (err, infocommandes) => {
+      if (!infocommandes || err) {
+        return res.status(404).json({ status: false, message: 'Error when get list of infocommande.' });
+      }else {
+        return res.status(200).json({ status: true, infocommande : infocommandes});
+      }
+    }
+  );
+}

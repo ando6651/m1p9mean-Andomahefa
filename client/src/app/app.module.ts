@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 // components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +37,7 @@ import { CommandeRespComponent } from './responsable/commande-resp/commande-resp
 import { GestionRespComponent } from './responsable/gestion-resp/gestion-resp.component';
 import { SituationRespComponent } from './responsable/situation-resp/situation-resp.component';
 import { CommandeLivreurComponent } from './livreur/commande-livreur/commande-livreur.component';
+import { DetailCommandeComponent } from './restaurant/commande-restau/detail-commande/detail-commande.component';
 
 @NgModule({
   declarations: [
@@ -54,17 +57,20 @@ import { CommandeLivreurComponent } from './livreur/commande-livreur/commande-li
     CommandeRespComponent,
     GestionRespComponent,
     SituationRespComponent,
-    CommandeLivreurComponent
+    CommandeLivreurComponent,
+    DetailCommandeComponent
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    Ng2SearchPipeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

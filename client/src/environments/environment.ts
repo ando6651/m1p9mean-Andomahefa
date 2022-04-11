@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://app-ekaly.herokuapp.com/api'
+  apiBaseUrl: 'https://localhost:5000/api'
 };
 
 /*

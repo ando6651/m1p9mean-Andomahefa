@@ -1,1 +1,32 @@
-<p>commande-livreur works!</p>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="input-group mb-2" style="max-width: 500px; margin-top: 25px;">
+      <div style="font-size: 18px;margin-right: 20px;margin-top: 4px;"> Liste des plats </div>
+      <div class="input-group-prepend">
+        <div class="input-group-text">Search</div>
+      </div>
+      <input type="text" class="form-control" id="inlineFormInputGroup" [(ngModel)]="term">
+    </div>
+    <div class="" style="display: inline-flex;flex-wrap: wrap;margin: 20px;">
+      <div *ngFor="let data of datas | filter:term | paginate: { itemsPerPage: 16, currentPage: p }" class="card" style="width: 18rem;margin: 10px;">
+        <div class="card-body">
+          <div style="display: inline-flex;width: 100%;" class="card-title">{{ data.client }}</div>
+          <p class="card-text">{{ data.date }}</p>
+          <a (click)="details(data._id);" class="card-link">Details</a>
+          <a (click)="livrer(data._id);" class="card-link">Livrer</a>
+        </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<div class="success" *ngIf="showSuccessMessage">
+  Saved successfully
+</div>
+
+<!-- Error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
